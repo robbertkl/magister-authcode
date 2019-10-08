@@ -1,0 +1,19 @@
+{
+  "name": "magister-authcode",
+  "version": "0.0.0",
+  "author": "Robbert Klarenbeek <robbertkl@renbeek.nl>",
+  "description": "Fetches an up-to-date auth code for Magister",
+  "license": "MIT",
+  "homepage": "https://github.com/robbertkl/magister-authcode",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robbertkl/magister-authcode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/robbertkl/magister-authcode/issues"
+  },
+  "keywords": [
+    "magister"
+  ],
+  "main": "index.js"
+}
