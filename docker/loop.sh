@@ -15,6 +15,7 @@ test -z "${INTERVAL}" && die "missing INTERVAL environment variable"
 
 FILE_OLD=/tmp/authcode_old
 FILE_NEW=/tmp/authcode_new
+PIPE=/tmp/pipe
 
 curl \
     --silent \
@@ -27,9 +28,10 @@ echo "Last known authcode:" `cat "${FILE_OLD}"`
 
 while :
 do
-    mkfifo pipe
-    tr -d '\n' < pipe > "${FILE_NEW}" &
-    phantomjs --load-images=false fetch.js > pipe
+    rm -f "${PIPE}"
+    mkfifo "${PIPE}"
+    tr -d '\n' < "${PIPE}" > "${FILE_NEW}" &
+    phantomjs --load-images=false fetch.js > "${PIPE}"
     if [ $? -eq 0 ]
     then
         if ! diff -q "${FILE_OLD}" "${FILE_NEW}" > /dev/null
